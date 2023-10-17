@@ -1,0 +1,58 @@
+<?php echo htmlspecialchars($_SERVER['loginserveur.php']); ?>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <title>ONT</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./indx.css">
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url("background-image.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        form {
+            background-image: url('./back.png');
+            padding: 70px;
+            width: 400px;
+            border-radius: 20px;
+            box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
+            text-align: left;
+        }
+
+        h1 {
+            margin-bottom: 40px;
+        }
+
+        label, input, button {
+            display: block;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+        <form>
+        <h1>Login</h1>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <button id="loginButton">Login</button>
+        <span><?php echo $invalid; ?></span>
+    </form>
+    <script>
+        document.getElementById("loginButton").addEventListener("click", function() {
+    window.location.href = "acceuil.html"
+
+});
+    </script>
+   
+</body>
+</html>

@@ -1,0 +1,112 @@
+<?php
+session_start();
+
+if(!isset($_SESSION['user'])) {
+  header("Location: indx.html");
+  exit;
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accueil ONT</title>
+    <link rel="stylesheet" href="index1.css">
+    <link rel="stylesheet" href="indx.css"> <!-- Ajout du lien vers le fichier CSS externe -->
+</head>
+
+<body>
+    <header class="navigation">
+        <h3>Welcome to the Official Website of ONAT</h3>
+        <div id="clock"></div>
+        <nav>
+            <a href="#">Contact</a>
+            <a href="#">Email</a>
+            <a href="#">Services</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <button class="buttons" onclick="openTab('lawyers')">المحامون</button>
+        <button class="buttons" onclick="openTab('courts')">المحاكم</button>
+        <button class="buttons" onclick="openTab('cases')">القضايا</button>
+    </main>
+
+    <main class="container-parties">
+        <h2>أطراف التقاضي</h2>
+        <button class="buttons" onclick="openTab('kask')">المدعى عليه</button>
+        <button class="buttons" onclick="openTab('parties')">المدعي</button>
+    </main>
+
+    <aside class="table-container">
+        <h2>معلومات عن القضايا</h2>
+        <table>
+            <tr>
+                <th>النوع</th>
+                <th>العدد</th>
+            </tr>
+            <tr>
+                <td>القضايا الجارية</td>
+                <td>Row 1, Column 1</td>
+            </tr>
+            <tr>
+                <td>القضايا في الطور الإبتدائي</td>
+                <td>Row 2, Column 1</td>
+            </tr>
+            <tr>
+                <td>القضايا في الطور الإستئنافي</td>
+                <td>Row 3, Column 1</td>
+            </tr>
+            <tr>
+                <td>القضايا في الطور التعقيب</td>
+                <td>Row 4, Column 1</td>
+            </tr>
+        </table>
+    </aside>
+
+    <!-- <script src="script.js"></script> Ajout du lien vers le fichier JavaScript externe -->
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const seconds = now.getSeconds().toString().padStart(2, '0');
+
+            const clockElement = document.getElementById('clock');
+            clockElement.textContent = `${hours}:${minutes}:${seconds}`;
+        }
+        updateClock();
+        setInterval(updateClock, 1000);
+
+        function openTab(tab) {
+
+            if (tab === 'lawyers') {
+                window.location.href = 'avocat.php';
+            }
+
+            if (tab === 'courts') {
+                window.location.href = 'tribunal.php';
+            }
+
+            if (tab === 'parties') {
+                window.location.href = 'demandeur.php';
+            }
+            if (tab === 'cases') {
+                window.location.href = 'affaire.php';
+
+            }
+            if (tab === 'kask') {
+                window.location.href = 'defdr.php';
+
+            }
+
+        }
+    </script>
+
+</body>
+
+</html>
